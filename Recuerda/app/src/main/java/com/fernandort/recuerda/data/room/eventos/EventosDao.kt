@@ -10,17 +10,17 @@ import androidx.room.Update
 @Dao
 interface EventosDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(eventos : EventosEntity)
+    suspend fun insert(eventos : EventoEntity)
 
     @Delete
-    suspend fun delete(eventos : EventosEntity)
+    suspend fun delete(eventos : EventoEntity)
 
     @Update
-    suspend fun update(eventos: EventosEntity)
+    suspend fun update(eventos: EventoEntity)
 
     @Query("SELECT * FROM eventos WHERE id = :id")
-    suspend fun get(id: String): EventosEntity
+    suspend fun get(id: String): EventoEntity
 
     @Query("SELECT * FROM eventos")
-    suspend fun get(): List<EventosEntity>
+    suspend fun get(): List<EventoEntity>
 }

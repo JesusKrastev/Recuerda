@@ -6,22 +6,21 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.fernandort.recuerda.data.room.eventos.EventosEntity
 
 @Dao
 interface NotasDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(notas : NotasEntity)
+    suspend fun insert(notas : NotaEntity)
 
     @Delete
-    suspend fun delete(notas : NotasEntity)
+    suspend fun delete(notas : NotaEntity)
 
     @Update
-    suspend fun update(notas: NotasEntity)
+    suspend fun update(notas: NotaEntity)
 
     @Query("SELECT * FROM notas WHERE id = :id")
-    suspend fun get(id: String): NotasEntity
+    suspend fun get(id: String): NotaEntity
 
     @Query("SELECT * FROM notas")
-    suspend fun get(): List<NotasEntity>
+    suspend fun get(): List<NotaEntity>
 }

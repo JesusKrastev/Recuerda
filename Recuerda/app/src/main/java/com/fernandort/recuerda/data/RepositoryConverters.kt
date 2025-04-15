@@ -1,53 +1,54 @@
 package com.fernandort.recuerda.data
 
-import com.fernandort.recuerda.data.room.contactos.ContactosEntity
-import com.fernandort.recuerda.data.room.eventos.EventosEntity
-import com.fernandort.recuerda.data.room.notas.NotasEntity
+import com.fernandort.recuerda.data.room.contactos.ContactoEntity
+import com.fernandort.recuerda.data.room.eventos.EventoEntity
+import com.fernandort.recuerda.data.room.notas.NotaEntity
 import com.fernandort.recuerda.models.Contacto
-import com.fernandort.recuerda.models.Eventos
-import com.fernandort.recuerda.models.Notas
-import java.time.LocalDateTime
+import com.fernandort.recuerda.models.Evento
+import com.fernandort.recuerda.models.Nota
 
-fun EventosEntity.toEventos(): Eventos =
-    Eventos(
+fun EventoEntity.toEvento(): Evento =
+    Evento(
         id = id,
         titulo = titulo,
         descripcion = descripcion,
         fecha = fecha
     )
 
-fun Eventos.toEventosEntity(): EventosEntity =
-    EventosEntity(
+fun Evento.toEventoEntity(): EventoEntity =
+    EventoEntity(
         id = id,
         titulo = titulo,
         descripcion = descripcion,
         fecha = fecha
     )
 
-fun Contacto.toContactoEntity(): ContactosEntity =
-    ContactosEntity(
+fun Contacto.toContactoEntity(): ContactoEntity =
+    ContactoEntity(
         id = id,
         nombre = nombre,
+        apellidos = apellidos,
         telefono = telefono
     )
 
-fun ContactosEntity.toContacto(): Contacto =
+fun ContactoEntity.toContacto(): Contacto =
     Contacto(
         id = id,
         nombre = nombre,
+        apellidos = apellidos,
         telefono = telefono
     )
 
-fun Notas.toNotasEntity(): NotasEntity =
-    NotasEntity(
+fun Nota.toNotaEntity(): NotaEntity =
+    NotaEntity(
         id = id,
         titulo = titulo,
         descripcion = descripcion,
         fecha = fecha
     )
 
-fun NotasEntity.toNotas(): Notas =
-    Notas(
+fun NotaEntity.toNota(): Nota =
+    Nota(
         id = id,
         titulo = titulo,
         descripcion = descripcion,

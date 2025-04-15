@@ -6,21 +6,22 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ContactosDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(contacto : ContactosEntity)
+    suspend fun insert(contacto : ContactoEntity)
 
     @Delete
-    suspend fun delete(contacto : ContactosEntity)
+    suspend fun delete(contacto : ContactoEntity)
 
     @Update
-    suspend fun update(contacto: ContactosEntity)
+    suspend fun update(contacto: ContactoEntity)
 
     @Query("SELECT * FROM contactos WHERE id = :id")
-    suspend fun get(id: String): ContactosEntity
+    suspend fun get(id: String): ContactoEntity
 
     @Query("SELECT * FROM contactos")
-    suspend fun get(): List<ContactosEntity>
+    fun get(): Flow<List<ContactoEntity>>
 }

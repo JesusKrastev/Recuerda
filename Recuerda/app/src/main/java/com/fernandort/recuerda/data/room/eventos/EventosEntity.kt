@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.time.LocalDateTime
 
 @Entity(tableName = "eventos")
-data class EventosEntity(
+data class EventoEntity(
     @PrimaryKey val id: String,
     val titulo: String,
     val descripcion: String,

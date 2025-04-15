@@ -1,9 +1,8 @@
 package com.fernandort.recuerda.models
 
-import androidx.room.PrimaryKey
 import java.time.LocalDateTime
 
-data class Eventos(
+data class Evento(
     val id: String,
     val titulo: String,
     val descripcion: String,

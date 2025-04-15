@@ -6,14 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.fernandort.recuerda.data.room.contactos.ContactosDao
-import com.fernandort.recuerda.data.room.contactos.ContactosEntity
+import com.fernandort.recuerda.data.room.contactos.ContactoEntity
 import com.fernandort.recuerda.data.room.eventos.EventosDao
-import com.fernandort.recuerda.data.room.eventos.EventosEntity
+import com.fernandort.recuerda.data.room.eventos.EventoEntity
 import com.fernandort.recuerda.data.room.notas.NotasDao
-import com.fernandort.recuerda.data.room.notas.NotasEntity
+import com.fernandort.recuerda.data.room.notas.NotaEntity
 
 @Database(
-    entities = [ContactosEntity::class, EventosEntity::class, NotasEntity::class],
+    entities = [ContactoEntity::class, EventoEntity::class, NotaEntity::class],
     version = 1
 )
 @TypeConverters(RoomConverters::class)
