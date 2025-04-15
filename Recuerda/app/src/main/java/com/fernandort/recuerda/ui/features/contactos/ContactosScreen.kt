@@ -164,12 +164,10 @@ fun SinContactos(
             Icon(
                 modifier = Modifier.size(46.dp),
                 imageVector = Icons.Filled.Person,
-                contentDescription = "Sin contactos",
-                tint = MaterialTheme.colorScheme.primary
+                contentDescription = "Sin contactos"
             )
             TextoCuerpoLargo(
-                text = "No hay contactos",
-                color = MaterialTheme.colorScheme.primary
+                text = "No hay contactos"
             )
         }
     }
@@ -189,12 +187,10 @@ fun BusquedaSinContactos(
             Icon(
                 modifier = Modifier.size(46.dp),
                 imageVector = Icons.Filled.Search,
-                contentDescription = "Sin contactos",
-                tint = MaterialTheme.colorScheme.primary
+                contentDescription = "Sin contactos"
             )
             TextoCuerpoLargo(
-                text = "Sin resultados",
-                color = MaterialTheme.colorScheme.primary
+                text = "Sin resultados"
             )
         }
     }

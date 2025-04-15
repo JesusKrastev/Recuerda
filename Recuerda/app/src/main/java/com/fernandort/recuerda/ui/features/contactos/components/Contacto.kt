@@ -41,10 +41,7 @@ fun ImageContacto(
     ) {
         TextoCuerpoLargo(
             modifier = Modifier.padding(16.dp),
-            text = "$nombre $apellido"
-                .split(" ")
-                .filter { it.isNotBlank() }
-                .joinToString("") { it.first().uppercase() },
+            text = "${nombre.first()}${apellido.first()}",
             color = MaterialTheme.colorScheme.onSecondary
         )
     }
