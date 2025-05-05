@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface EventosDao {
@@ -22,5 +23,5 @@ interface EventosDao {
     suspend fun get(id: String): EventoEntity
 
     @Query("SELECT * FROM eventos")
-    suspend fun get(): List<EventoEntity>
+    fun get(): Flow<List<EventoEntity>>
 }

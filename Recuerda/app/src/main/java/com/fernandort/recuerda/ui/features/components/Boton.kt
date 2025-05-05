@@ -1,4 +1,4 @@
-package com.fernandort.recuerda.ui.components
+package com.fernandort.recuerda.ui.features.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape

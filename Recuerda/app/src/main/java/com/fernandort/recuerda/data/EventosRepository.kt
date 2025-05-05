@@ -3,6 +3,8 @@ package com.fernandort.recuerda.data
 import com.fernandort.recuerda.data.room.eventos.EventosDao
 import com.fernandort.recuerda.models.Evento
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -13,7 +15,9 @@ class EventosRepository @Inject constructor(
         eventosDao.insert(evento.toEventoEntity())
     }
 
-    suspend fun get(): List<Evento> = withContext(Dispatchers.IO) {
-        eventosDao.get().map { it.toEvento() }
+    suspend fun get(): Flow<List<Evento>> = withContext(Dispatchers.IO) {
+        eventosDao.get().map { eventos ->
+            eventos.map { it.toEvento() }
+        }
     }
 }

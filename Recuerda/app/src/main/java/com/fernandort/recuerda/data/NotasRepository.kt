@@ -3,6 +3,8 @@ package com.fernandort.recuerda.data
 import com.fernandort.recuerda.data.room.notas.NotasDao
 import com.fernandort.recuerda.models.Nota
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -21,8 +23,10 @@ class NotasRepository @Inject constructor(
         notasDao.update(notas.toNotaEntity())
     }
 
-    suspend fun get(): List<Nota> = withContext(Dispatchers.IO) {
-        notasDao.get().map { it.toNota() }
+    suspend fun get(): Flow<List<Nota>> = withContext(Dispatchers.IO) {
+        notasDao.get().map { notas ->
+            notas.map { it.toNota() }
+        }
     }
 
     suspend fun get(id: String): Nota = withContext(Dispatchers.IO) {

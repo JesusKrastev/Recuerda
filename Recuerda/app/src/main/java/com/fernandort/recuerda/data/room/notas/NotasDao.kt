@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NotasDao {
@@ -22,5 +23,5 @@ interface NotasDao {
     suspend fun get(id: String): NotaEntity
 
     @Query("SELECT * FROM notas")
-    suspend fun get(): List<NotaEntity>
+    fun get(): Flow<List<NotaEntity>>
 }

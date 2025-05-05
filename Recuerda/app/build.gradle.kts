@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.com.google.dagger)
     alias(libs.plugins.devtools.ksp)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
@@ -65,4 +66,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+    implementation(libs.kotlinx.serializarion.json)
+    implementation(libs.compose.navigation)
 }

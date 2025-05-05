@@ -9,7 +9,7 @@ import java.time.ZoneOffset
 class RoomConverters {
     @TypeConverter
     fun fromTimestamp(valor: Long): LocalDateTime {
-        return Instant.now().atZone(ZoneId.systemDefault()).toLocalDateTime()
+        return Instant.ofEpochMilli(valor).atZone(ZoneId.systemDefault()).toLocalDateTime()
     }
 
     @TypeConverter

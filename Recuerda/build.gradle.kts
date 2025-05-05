@@ -5,4 +5,5 @@ plugins {
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.devtools.ksp) apply false
     alias(libs.plugins.com.google.dagger) apply false
+    alias(libs.plugins.kotlinx.serialization) apply false
 }

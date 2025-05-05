@@ -48,8 +48,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.fernandort.recuerda.ui.components.Boton
-import com.fernandort.recuerda.ui.components.TopBar
+import com.fernandort.recuerda.ui.features.components.Boton
+import com.fernandort.recuerda.ui.features.components.NavBar
+import com.fernandort.recuerda.ui.features.components.TopBar
 import com.fernandort.recuerda.ui.composables.CorrutinaGestionSnackBar
 import com.fernandort.recuerda.ui.composables.OutlinedTextFieldWithErrorState
 import com.fernandort.recuerda.ui.composables.SnackbarCommon
@@ -554,6 +555,7 @@ fun ContactoDropDownMenu(
 fun ContactosScreen(
     modifier: Modifier = Modifier,
     buscadorState: String,
+    onNavigateToNotas: () -> Unit,
     validacionContactoState: ValidacionContactoUiState,
     tipoBottomSheetState: BottomSheetType,
     informacionEstado: InformacionEstadoUiState,
@@ -576,6 +578,13 @@ fun ContactosScreen(
         topBar = {
             TopBar(
                 title = "Contactos"
+            )
+        },
+        bottomBar = {
+            NavBar(
+                selectedPage = 1,
+                onNavigateToNotas = onNavigateToNotas,
+                onNavigateToContactos = { }
             )
         },
         floatingActionButton = {
@@ -654,7 +663,8 @@ fun ContactosScreenPreview() {
                 contactoState = ContactoUiState(),
                 buscadorState = "",
                 validacionContactoState = ValidacionContactoUiState(),
-                informacionEstado = InformacionEstadoUiState.Oculta()
+                informacionEstado = InformacionEstadoUiState.Oculta(),
+                onNavigateToNotas = { },
             )
         }
     }
