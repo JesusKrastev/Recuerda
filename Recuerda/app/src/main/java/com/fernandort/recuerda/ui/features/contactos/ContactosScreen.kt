@@ -303,21 +303,23 @@ fun EditarContactoBottomSheet(
             color = MaterialTheme.colorScheme.onSecondary,
             fontWeight = FontWeight.SemiBold
         )
-        CampoNombre(
-            nombreState = contactoState.nombre,
-            validacionState = validacionContactoState.validacionNombre,
-            onCambiarValor = onCambiarNombre
-        )
-        CampoApellidos(
-            apellidosState = contactoState.apellidos,
-            validacionState = validacionContactoState.validacionApellidos,
-            onCambiarValor = onCambiarApellido
-        )
-        CampoTelefono(
-            telefonoState = contactoState.telefono,
-            validacionState = validacionContactoState.validacionTelefono,
-            onCambiarValor = onCambiarTelefono
-        )
+        Column {
+            CampoNombre(
+                nombreState = contactoState.nombre,
+                validacionState = validacionContactoState.validacionNombre,
+                onCambiarValor = onCambiarNombre
+            )
+            CampoApellidos(
+                apellidosState = contactoState.apellidos,
+                validacionState = validacionContactoState.validacionApellidos,
+                onCambiarValor = onCambiarApellido
+            )
+            CampoTelefono(
+                telefonoState = contactoState.telefono,
+                validacionState = validacionContactoState.validacionTelefono,
+                onCambiarValor = onCambiarTelefono
+            )
+        }
         BotonGuardar(
             onClick = onGuardar
         )
@@ -427,21 +429,23 @@ fun CrearContactoBottomSheet(
             color = MaterialTheme.colorScheme.onSecondary,
             fontWeight = FontWeight.SemiBold
         )
-        CampoNombre(
-            nombreState = contactoState.nombre,
-            validacionState = validacionContactoState.validacionNombre,
-            onCambiarValor = onCambiarNombre
-        )
-        CampoApellidos(
-            apellidosState = contactoState.apellidos,
-            validacionState = validacionContactoState.validacionApellidos,
-            onCambiarValor = onCambiarApellido
-        )
-        CampoTelefono(
-            telefonoState = contactoState.telefono,
-            validacionState = validacionContactoState.validacionTelefono,
-            onCambiarValor = onCambiarTelefono
-        )
+        Column {
+            CampoNombre(
+                nombreState = contactoState.nombre,
+                validacionState = validacionContactoState.validacionNombre,
+                onCambiarValor = onCambiarNombre
+            )
+            CampoApellidos(
+                apellidosState = contactoState.apellidos,
+                validacionState = validacionContactoState.validacionApellidos,
+                onCambiarValor = onCambiarApellido
+            )
+            CampoTelefono(
+                telefonoState = contactoState.telefono,
+                validacionState = validacionContactoState.validacionTelefono,
+                onCambiarValor = onCambiarTelefono
+            )
+        }
         BotonGuardar(
             onClick = onGuardar
         )
@@ -556,6 +560,9 @@ fun ContactosScreen(
     modifier: Modifier = Modifier,
     buscadorState: String,
     onNavigateToNotas: () -> Unit,
+    onNavigateToJuegos: () -> Unit,
+    onNavigateToAsistenteIA: () -> Unit,
+    onNavigateToEventos: () -> Unit,
     validacionContactoState: ValidacionContactoUiState,
     tipoBottomSheetState: BottomSheetType,
     informacionEstado: InformacionEstadoUiState,
@@ -582,9 +589,12 @@ fun ContactosScreen(
         },
         bottomBar = {
             NavBar(
-                selectedPage = 1,
+                selectedPage = 2,
+                onNavigateToEventos = onNavigateToEventos,
                 onNavigateToNotas = onNavigateToNotas,
-                onNavigateToContactos = { }
+                onNavigateToContactos = { },
+                onNavigateToAsistenteIA = onNavigateToAsistenteIA,
+                onNavigateToJuegos = onNavigateToJuegos,
             )
         },
         floatingActionButton = {
@@ -627,44 +637,6 @@ fun ContactosScreen(
                 onCambiarApellido = {
                     onContactosEvent(ContactosEvent.OnApellidoChange(it))
                 }
-            )
-        }
-    }
-}
-
-@Preview
-@Composable
-fun ContactosScreenPreview() {
-    RecuerdaTheme {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
-            ContactosScreen(
-                contactosState = listOf(
-                    ContactoUiState(
-                        id = "1",
-                        nombre = "Juan Perez",
-                        telefono = "5555555555"
-                    ),
-                    ContactoUiState(
-                        id = "2",
-                        nombre = "Juan Perez",
-                        telefono = "5555555555"
-                    ),
-                    ContactoUiState(
-                        id = "3",
-                        nombre = "Juan Perez",
-                        telefono = "5555555555"
-                    )
-                ),
-                tipoBottomSheetState = BottomSheetType.Oculto,
-                onContactosEvent = {},
-                contactoState = ContactoUiState(),
-                buscadorState = "",
-                validacionContactoState = ValidacionContactoUiState(),
-                informacionEstado = InformacionEstadoUiState.Oculta(),
-                onNavigateToNotas = { },
             )
         }
     }

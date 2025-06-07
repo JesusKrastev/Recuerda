@@ -10,14 +10,12 @@ import com.fernandort.recuerda.ui.features.notas.NotasViewModel
 @Composable
 fun RecuerdaNavHost() {
     val navController: NavHostController = rememberNavController()
-    val vmNotas: NotasViewModel = hiltViewModel()
 
     NavHost(
         navController = navController,
-        startDestination = NotasRoute
+        startDestination = EventosRoute
     ) {
         notasScreen(
-            vm = vmNotas,
             onNavigateToCrearNota = {
                 navController.navigateToFormNota()
             },
@@ -26,6 +24,15 @@ fun RecuerdaNavHost() {
             },
             onNavigateToContactos = {
                 navController.navigateToContactos()
+            },
+            onNavigateToAsistenteIA = {
+                navController.navigateToAsistenteIA()
+            },
+            onNavigateToJuegos = {
+                navController.navigateToJuegos()
+            },
+            onNavigateToEventos = {
+                navController.navigateToEventos()
             },
         )
         formNotaScreen(
@@ -36,7 +43,57 @@ fun RecuerdaNavHost() {
         contactosScreen(
             onNavigateToNotas = {
                 navController.navigateToNotas()
+            },
+            onNavigateToAsistenteIA = {
+                navController.navigateToAsistenteIA()
+            },
+            onNavigateToJuegos = {
+                navController.navigateToJuegos()
+            },
+            onNavigateToEventos = {
+                navController.navigateToEventos()
+            },
+        )
+        asistenteIAScreen(
+            onNavigateAtras = {
+                navController.navigateUp()
             }
+        )
+        juegosScreen(
+            onNavigateToContactos = {
+                navController.navigateToContactos()
+            },
+            onNavigateToNotas = {
+                navController.navigateToNotas()
+            },
+            onNavigateToAsistenteIA = {
+                navController.navigateToAsistenteIA()
+            },
+            onNavigateToBot = {
+                navController.navigateToBot(juegoId = it)
+            },
+            onNavigateToEventos = {
+                navController.navigateToEventos()
+            },
+        )
+        botScreen(
+            onNavigateAtras = {
+                navController.navigateUp()
+            }
+        )
+        eventosScreen(
+            onNavigateToContactos = {
+                navController.navigateToContactos()
+            },
+            onNavigateToJuegos = {
+                navController.navigateToJuegos()
+            },
+            onNavigateToNotas = {
+                navController.navigateToNotas()
+            },
+            onNavigateToAsistenteIA = {
+                navController.navigateToAsistenteIA()
+            },
         )
     }
 }

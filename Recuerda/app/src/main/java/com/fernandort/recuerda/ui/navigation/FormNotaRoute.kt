@@ -40,8 +40,6 @@ fun NavGraphBuilder.formNotaScreen(
             vm.notaState.id != id
         ) vm.setNotaState(id = id)
 
-        Log.d("FormNotaScreen", "id: $id")
-
         FormNotaScreen(
             notaState = vm.notaState,
             editando = vm.editando,

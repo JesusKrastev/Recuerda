@@ -15,6 +15,14 @@ class EventosRepository @Inject constructor(
         eventosDao.insert(evento.toEventoEntity())
     }
 
+    suspend fun update(evento: Evento) = withContext(Dispatchers.IO) {
+        eventosDao.update(evento.toEventoEntity())
+    }
+
+    suspend fun delete(evento: Evento) = withContext(Dispatchers.IO) {
+        eventosDao.delete(evento.toEventoEntity())
+    }
+
     suspend fun get(): Flow<List<Evento>> = withContext(Dispatchers.IO) {
         eventosDao.get().map { eventos ->
             eventos.map { it.toEvento() }

@@ -18,6 +18,9 @@ fun NavController.navigateToContactos(navOptions: NavOptions? = null) {
 
 fun NavGraphBuilder.contactosScreen(
     onNavigateToNotas: () -> Unit,
+    onNavigateToAsistenteIA: () -> Unit,
+    onNavigateToJuegos: () -> Unit,
+    onNavigateToEventos: () -> Unit,
 ) {
     composable<ContactosRoute> {
         val vm: ContactosViewModel = hiltViewModel()
@@ -30,7 +33,10 @@ fun NavGraphBuilder.contactosScreen(
             informacionEstado = vm.informacionEstadoState,
             contactosState = vm.contactosFiltradoState,
             contactoState = vm.contactoState,
-            onContactosEvent = vm::onContactosEvent
+            onContactosEvent = vm::onContactosEvent,
+            onNavigateToAsistenteIA = onNavigateToAsistenteIA,
+            onNavigateToJuegos = onNavigateToJuegos,
+            onNavigateToEventos = onNavigateToEventos,
         )
     }
 }

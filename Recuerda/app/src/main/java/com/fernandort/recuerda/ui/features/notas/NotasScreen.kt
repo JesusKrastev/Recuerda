@@ -201,8 +201,11 @@ fun NotasScreen(
     modifier: Modifier = Modifier,
     notasState: List<NotaUiState>,
     onNavigateToContactos: () -> Unit,
+    onNavigateToJuegos: () -> Unit,
+    onNavigateToEventos: () ->  Unit,
     onNotasEvent: (NotasEvent) -> Unit,
     onNavigateToCrearNota: () -> Unit,
+    onNavigateToAsistenteIA: () -> Unit,
     onNavigateToEditarNota: (String) -> Unit,
 ) {
     Scaffold(
@@ -216,9 +219,12 @@ fun NotasScreen(
         },
         bottomBar = {
             NavBar(
-                selectedPage = 0,
+                selectedPage = 1,
                 onNavigateToNotas = { },
-                onNavigateToContactos = onNavigateToContactos
+                onNavigateToContactos = onNavigateToContactos,
+                onNavigateToAsistenteIA =  onNavigateToAsistenteIA,
+                onNavigateToJuegos = onNavigateToJuegos,
+                onNavigateToEventos = onNavigateToEventos,
             )
         },
         floatingActionButton = {

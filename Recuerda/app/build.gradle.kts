@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -19,6 +22,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        val properties = Properties()
+        properties.load(FileInputStream(rootProject.file("local.properties")))
+        buildConfigField("String", "GEMINI_API_KEY", "\"${properties.getProperty("GEMINI_API_KEY")}\"")
     }
 
     buildTypes {
@@ -39,6 +45,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -68,4 +75,9 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     implementation(libs.kotlinx.serializarion.json)
     implementation(libs.compose.navigation)
+    implementation(libs.generativeai)
+    implementation("com.kizitonwose.calendar:view:2.7.0")
+    implementation("com.kizitonwose.calendar:compose:2.7.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+    implementation(libs.alarmee)
 }

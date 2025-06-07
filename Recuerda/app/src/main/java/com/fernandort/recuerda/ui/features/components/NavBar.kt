@@ -4,11 +4,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Article
-import androidx.compose.material.icons.filled.Bolt
+import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Contacts
-import androidx.compose.material.icons.filled.SmartToy
+import androidx.compose.material.icons.filled.Message
+import androidx.compose.material.icons.filled.VideogameAsset
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -22,14 +22,16 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun NavBar(
     selectedPage: Int,
+    onNavigateToEventos: () -> Unit,
     onNavigateToNotas: () -> Unit,
     onNavigateToContactos: () -> Unit,
+    onNavigateToAsistenteIA: () -> Unit,
+    onNavigateToJuegos: () -> Unit,
 ) {
     @Immutable
     data class NavOption(
@@ -41,6 +43,12 @@ fun NavBar(
 
     val listNavOptions: List<NavOption> = listOf(
         NavOption(
+            icon = Icons.Filled.CalendarMonth,
+            description = "Eventos",
+            title = "Eventos",
+            onClick = onNavigateToEventos
+        ),
+        NavOption(
             icon = Icons.Filled.Article,
             description = "Notas",
             title = "Notas",
@@ -51,6 +59,18 @@ fun NavBar(
             description = "Contactos",
             title = "Contactos",
             onClick = onNavigateToContactos
+        ),
+        NavOption(
+            icon = Icons.Filled.VideogameAsset,
+            description = "Juegos",
+            title = "Juegos",
+            onClick = onNavigateToJuegos
+        ),
+        NavOption(
+            icon = Icons.Filled.Message,
+            description = "Asistente",
+            title = "Asistente",
+            onClick = onNavigateToAsistenteIA
         ),
     )
 

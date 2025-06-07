@@ -2,6 +2,7 @@ package com.fernandort.recuerda.utilities.dispositivo
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -30,4 +31,19 @@ fun registroLlamarPorTelefonoIntent(
             }
         }
     }
+}
+
+@Composable
+fun notificationPermissionLauncher(): ManagedActivityResultLauncher<String, Boolean> {
+    val launcher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            Log.d("NotificationPermission", "Permission granted")
+        } else {
+            Log.d("NotificationPermission", "Permission denied")
+        }
+    }
+
+    return launcher
 }

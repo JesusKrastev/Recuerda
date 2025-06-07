@@ -1,5 +1,6 @@
 package com.fernandort.recuerda.ui.navigation
 
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
@@ -16,18 +17,25 @@ fun NavController.navigateToNotas(navOptions: NavOptions? = null) {
 }
 
 fun NavGraphBuilder.notasScreen(
-    vm: NotasViewModel,
     onNavigateToContactos: () -> Unit,
     onNavigateToCrearNota: () -> Unit,
+    onNavigateToJuegos: () -> Unit,
     onNavigateToEditarNota: (String) -> Unit,
+    onNavigateToEventos: () -> Unit,
+    onNavigateToAsistenteIA: () -> Unit,
 ) {
     composable<NotasRoute> {
+        val vm: NotasViewModel = hiltViewModel()
+
         NotasScreen(
             notasState = vm.notasState,
             onNavigateToCrearNota = onNavigateToCrearNota,
             onNavigateToEditarNota = onNavigateToEditarNota,
             onNotasEvent = vm::onNotasEvent,
-            onNavigateToContactos = onNavigateToContactos
+            onNavigateToContactos = onNavigateToContactos,
+            onNavigateToAsistenteIA = onNavigateToAsistenteIA,
+            onNavigateToJuegos = onNavigateToJuegos,
+            onNavigateToEventos = onNavigateToEventos,
         )
     }
 }
